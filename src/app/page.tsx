@@ -101,13 +101,7 @@ const text = "mmedeed bsima!! gehdee bi chamd hairgue".trim();
       )}
       {showResult && (
         <div className="text-center flex flex-col justify-center items-center">
-          <video
-            className="rounded-lg mb-4"
-            src="/cute.mp4"
-            autoPlay
-            loop
-            controls
-          />
+          <Image className="rounded-lg mb-4" src="/cute.gif" alt="Cute GIF" width={400} height={400} />
           <div className="text-center flex flex-col justify-center items-center">
             {showResult && (
               <motion.h2
