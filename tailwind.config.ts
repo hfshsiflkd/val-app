@@ -12,16 +12,6 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
-      animation: {
-        heartbeat: "heartbeat 1s infinite ease-in-out",
-      },
-      keyframes: {
-        heartbeat: {
-          "0%": { transform: "scale(1)" },
-          "50%": { transform: "scale(1.3)" },
-          "100%": { transform: "scale(1)" },
-        },
-      },
     },
   },
   plugins: [],
