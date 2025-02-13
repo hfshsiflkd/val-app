@@ -32,7 +32,7 @@ const text = "mmedeed bsima!! gehdee bi chamd hairgue".trim();
         setShowLoader(false);
         setShowResult(true);
         startTypewriterEffect();
-      }, 3000);
+      }, 1500);
     }
     return () => clearTimeout(timer);
   }, [showLoader, startTypewriterEffect]);
@@ -111,7 +111,7 @@ const text = "mmedeed bsima!! gehdee bi chamd hairgue".trim();
           <div className="text-center flex flex-col justify-center items-center">
             {showResult && (
               <motion.h2
-                className="text-4xl font-bold text-500 overflow-auto border-r-2 border-white whitespace-normal w-[375px] h-auto max-h-[200px]"
+                className="text-4xl font-bold text-500 overflow-auto  border-white whitespace-normal w-[375px] h-auto max-h-[200px]"
                 initial={{ opacity: 0, y: -50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1 }}
