@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Head from "next/head";
+import Image from "next/image";
 
 export default function Home() {
   const [showQuestion, setShowQuestion] = useState(true);
@@ -14,7 +15,7 @@ export default function Home() {
       timer = setTimeout(() => {
         setShowLoader(false);
         setShowResult(true);
-      }, 3000);
+      }, 2000);
     }
     return () => clearTimeout(timer);
   }, [showLoader]);
@@ -58,12 +59,18 @@ export default function Home() {
 
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-pink-100 font-quicksand w-screen">
+      {!showLoader && !showResult && (
+        <Image src="/hamster.jpg" alt="" width={400} height={400} />
+      )}
       <Head>
         <title>Do You Love Me?</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1,  heigth=device-heigth" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1,  heigth=device-heigth"
+        />
       </Head>
       {showQuestion && (
-        <div className="text-center">
+        <div className="text-center ">
           <h2 className="text-4xl font-bold mb-6">Do you love me?</h2>
           <div className="relative flex justify-center gap-6">
             <button
@@ -81,9 +88,11 @@ export default function Home() {
           </div>
         </div>
       )}
-      {showLoader && <div className="mt-10 text-red-500 text-6xl">❤️</div>}
+      {showLoader && (
+        <div className="mt-10 text-red-500 text-6xl animate-heartbeat">❤️</div>
+      )}
       {showResult && (
-        <div className="text-center">
+        <div className="text-center flex flex-col justify-center items-center">
           <video
             className="rounded-lg mb-4"
             src="/cute.mp4"
@@ -91,7 +100,9 @@ export default function Home() {
             loop
             controls
           />
-          <h2 className="text-4xl font-bold">medeed bsima !</h2>
+          <h2 className="text-4xl font-bold">
+            medeed bsima!! gehdee bi chamd hairgue
+          </h2>
         </div>
       )}
     </div>
