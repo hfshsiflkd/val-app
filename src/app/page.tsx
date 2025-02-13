@@ -24,27 +24,37 @@ export default function Home() {
     setShowLoader(true);
   };
 
-  const handleNoHover = (e: React.MouseEvent<HTMLButtonElement>) => {
-    const button = e.currentTarget;
-    const container = button.parentElement?.parentElement;
+ const handleNoHover = (e: React.MouseEvent<HTMLButtonElement>) => {
+   const button = e.currentTarget;
+   const container = button.parentElement?.parentElement;
 
-    if (container) {
-      const containerRect = container.getBoundingClientRect();
-      const buttonWidth = button.clientWidth;
-      const buttonHeight = button.clientHeight;
+   if (container) {
+     const containerRect = container.getBoundingClientRect();
+     const buttonWidth = button.clientWidth;
+     const buttonHeight = button.clientHeight;
 
-      const newX =
-        containerRect.left +
-        Math.random() * (containerRect.width - buttonWidth);
-      const newY =
-        containerRect.top +
-        Math.random() * (containerRect.height - buttonHeight);
+     // Дэлгэцийн яг голын координатыг авах
+     const centerX = containerRect.width / 2 - buttonWidth / 2;
+     const centerY = containerRect.height / 2 - buttonHeight / 2;
 
-      button.style.position = "absolute";
-      button.style.left = `${newX}px`;
-      button.style.top = `${newY}px`;
-    }
-  };
+     // Хөдөлгөөн 400px-ээс хэтрэхгүй байх
+     const maxMove = 200; // Радиус (400px-ийн диаметр)
+
+     // Санамсаргүй байрлалыг голоос хазайлгахгүйгээр тооцоолох
+     const angle = Math.random() * 2 * Math.PI; // Санамсаргүй өнцөг
+     const radius = Math.random() * maxMove; // 0-200px доторх санамсаргүй зай
+
+     const offsetX = Math.cos(angle) * radius;
+     const offsetY = Math.sin(angle) * radius;
+
+     const newX = centerX + offsetX;
+     const newY = centerY + offsetY;
+
+     button.style.position = "absolute";
+     button.style.left = `${newX}px`;
+     button.style.top = `${newY}px`;
+   }
+ };
 
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-pink-100 font-quicksand w-screen">
